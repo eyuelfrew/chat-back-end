@@ -17,7 +17,9 @@ const app = express();
 
 app.use(express.json());
 connectDB();
-
+app.get("/abcd", (req, res) => {
+  res.send("Hello Thhere");
+});
 //user management route
 app.use("/api/user", userRoutes);
 //chat api end points
