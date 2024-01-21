@@ -12,14 +12,19 @@ import messageRoutes from "./routes/messageRoutes.js";
 import dotenv from "dotenv";
 import { notFound } from "./middleware/errorMiddleware.js";
 import { errorHandler } from "./middleware/errorMiddleware.js";
+import cors from "cors";
+const corsOptions = {
+  origin: "https://glistening-bienenstitch-25df2b.netlify.app",
+  optionsSuccessStatus: 200, // Some legacy browsers (IE11) choke on 204
+};
+
+app.use(cors(corsOptions));
 dotenv.config();
 const app = express();
 
 app.use(express.json());
 connectDB();
-app.get("/abcd", (req, res) => {
-  res.send("Hello Thhere");
-});
+
 //user management route
 app.use("/api/user", userRoutes);
 //chat api end points
