@@ -42,7 +42,7 @@ const server = app.listen(
 const io = new Server(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "https://glistening-bienenstitch-25df2b.netlify.app/",
+    origin: "http://localhost:5173",
     // credentials: true,
   },
   pingTimeout: 60000,
