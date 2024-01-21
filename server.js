@@ -37,7 +37,7 @@ const server = app.listen(
 const io = new Server(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "https://chat-app-back-6bsl.onrender.com",
+    origin: "https://glistening-bienenstitch-25df2b.netlify.app/",
     // credentials: true,
   },
   pingTimeout: 60000,
