@@ -35,7 +35,7 @@ const server = app.listen(
 const io = new Server(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "http://localhost:5000",
+    origin: "https://chat-app-back-6bsl.onrender.com",
     // credentials: true,
   },
   pingTimeout: 60000,
