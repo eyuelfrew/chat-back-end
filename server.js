@@ -14,13 +14,13 @@ import { notFound } from "./middleware/errorMiddleware.js";
 import { errorHandler } from "./middleware/errorMiddleware.js";
 import cors from "cors";
 const corsOptions = {
-  origin: "https://glistening-bienenstitch-25df2b.netlify.app",
+  origin: "http://localhost:5173/",
   optionsSuccessStatus: 200, // Some legacy browsers (IE11) choke on 204
 };
 
 dotenv.config();
 const app = express();
-app.use(cors());
+app.use(cors(corsOptions));
 
 app.use(express.json());
 connectDB();
