@@ -18,9 +18,9 @@ const corsOptions = {
   optionsSuccessStatus: 200, // Some legacy browsers (IE11) choke on 204
 };
 
-app.use(cors(corsOptions));
 dotenv.config();
 const app = express();
+app.use(cors(corsOptions));
 
 app.use(express.json());
 connectDB();
