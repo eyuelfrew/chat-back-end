@@ -13,17 +13,16 @@ import dotenv from "dotenv";
 import { notFound } from "./middleware/errorMiddleware.js";
 import { errorHandler } from "./middleware/errorMiddleware.js";
 import cors from "cors";
-const corsOptions = {
-  origin: ["https://testcaseonly.onrender.com"],
-  methods: ["POST", "PUT", "DELETE", "GET"],
-  credentials: true,
-};
+// const corsOptions = {
+//   origin: ["https://testcaseonly.onrender.com"],
+//   methods: ["POST", "PUT", "DELETE", "GET"],
+//   credentials: true,
+// };
 
 dotenv.config();
 const app = express();
-app.use(cors());
-
 app.use(express.json());
+app.use(cors());
 connectDB();
 app.get("/", (req, res) => {
   res.json("hello there");
