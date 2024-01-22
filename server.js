@@ -13,15 +13,15 @@ import dotenv from "dotenv";
 import { notFound } from "./middleware/errorMiddleware.js";
 import { errorHandler } from "./middleware/errorMiddleware.js";
 import cors from "cors";
-const corsOptions = {
-  origin: ["https://chat-front-end-three.vercel.app"],
-  methods: ["POST", "PUT", "DELETE", "GET"],
-  credentials: true,
-};
-
 dotenv.config();
 const app = express();
-app.use(cors(corsOptions));
+app.use(
+  cors({
+    origin: ["https://deploy-mern-rosy.vercel.app"],
+    methods: ["POST", "PUT", "DELETE", "GET"],
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 connectDB();
