@@ -14,8 +14,9 @@ import { notFound } from "./middleware/errorMiddleware.js";
 import { errorHandler } from "./middleware/errorMiddleware.js";
 import cors from "cors";
 const corsOptions = {
-  origin: "http://localhost:5173/",
-  optionsSuccessStatus: 200, // Some legacy browsers (IE11) choke on 204
+  origin: ["https://chat-front-end-three.vercel.app"],
+  methods: ["POST", "PUT", "DELETE", "GET"],
+  credentials: true,
 };
 
 dotenv.config();
@@ -42,7 +43,7 @@ const server = app.listen(
 const io = new Server(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "http://localhost:5173",
+    origin: "https://chat-front-end-three.vercel.app",
     // credentials: true,
   },
   pingTimeout: 60000,
