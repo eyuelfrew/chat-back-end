@@ -17,7 +17,7 @@ dotenv.config();
 const app = express();
 app.use(
   cors({
-    origin: ["https://deploy-mern-rosy.vercel.app"],
+    origin: ["https://testcaseonly.onrender.com"],
     methods: ["POST", "PUT", "DELETE", "GET"],
     credentials: true,
   })
