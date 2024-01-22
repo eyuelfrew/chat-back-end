@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
   res.json("hello there");
 });
 //user management route
-app.use("/api/user", userRoutes);
+app.use("/api/user",cors(), userRoutes);
 //chat api end points
 app.use("/api/chat", chatRoutes);
 //message routes
