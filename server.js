@@ -53,14 +53,9 @@ const server = app.listen(
   console.log(`Serever Started on PORT ${PORT}`.yellow.bold)
 );
 const io = new Server(server, {
-  pingTimeout: 60000,
   cors: {
-    origin: "https://chat-front-end-three.vercel.app",
-    credentials: true,
-    origin: "https://testcaseonly.onrender.com",
-    // credentials: true,
+    origin: "*",
   },
-  pingTimeout: 60000,
 });
 
 // io.on("connection", (socket) => {
