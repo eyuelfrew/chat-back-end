@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-
+import data from "./data/data.js";
 import express from "express";
 import { chats } from "./data/data.js";
 import connectDB from "./config/db.js";
@@ -28,6 +28,9 @@ connectDB();
 app.get("/", (req, res) => {
   res.json("hello there");
 });
+app.get("/sample", (req, res) => {
+  res.status(200).json({ data });
+});
 //user management route
 app.use("/api/user", userRoutes);
 //chat api end points
@@ -46,7 +49,7 @@ const io = new Server(server, {
   pingTimeout: 60000,
   cors: {
     origin: "https://chat-front-end-three.vercel.app",
-    // credentials: true,
+    credentials: true,
   },
   pingTimeout: 60000,
 });
