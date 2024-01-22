@@ -2,7 +2,7 @@
 /* eslint-disable no-undef */
 import data from "./data/data.js";
 import express from "express";
-import { chats } from "./data/data.js";
+// import { chats } from "./data/data.js";
 import connectDB from "./config/db.js";
 import colors from "colors";
 import { Server, Socket } from "socket.io";
