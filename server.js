@@ -45,7 +45,7 @@ const server = app.listen(
 const io = new Server(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "https://chat-front-end-three.vercel.app",
+    origin: "https://testcaseonly.onrender.com",
     // credentials: true,
   },
   pingTimeout: 60000,
