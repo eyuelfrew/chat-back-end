@@ -14,7 +14,7 @@ import { notFound } from "./middleware/errorMiddleware.js";
 import { errorHandler } from "./middleware/errorMiddleware.js";
 import cors from "cors";
 const corsOptions = {
-  origin: ["https://chat-front-end-three.vercel.app"],
+  origin: ["https://chat-front-end-three.vercel.app/"],
   methods: ["POST", "PUT", "DELETE", "GET"],
   credentials: true,
 };
