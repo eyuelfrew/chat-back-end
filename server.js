@@ -15,13 +15,7 @@ import { errorHandler } from "./middleware/errorMiddleware.js";
 import cors from "cors";
 dotenv.config();
 const app = express();
-app.use(
-  cors({
-    origin: ["https://testcaseonly.onrender.com"],
-    methods: ["POST", "PUT", "DELETE", "GET"],
-    credentials: true,
-  })
-);
+app.use(cors());
 
 // const corsOptions = {
 //   origin: ["https://testcaseonly.onrender.com"],
