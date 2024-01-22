@@ -25,7 +25,9 @@ app.use(cors(corsOptions));
 
 app.use(express.json());
 connectDB();
-
+app.get("/", (req, res) => {
+  res.json("hello there");
+});
 //user management route
 app.use("/api/user", userRoutes);
 //chat api end points
