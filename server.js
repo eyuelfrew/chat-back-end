@@ -23,7 +23,14 @@ app.use(
   })
 );
 
+// const corsOptions = {
+//   origin: ["https://testcaseonly.onrender.com"],
+//   methods: ["POST", "PUT", "DELETE", "GET"],
+//   credentials: true,
+// };
+
 app.use(express.json());
+app.use(cors());
 connectDB();
 app.get("/", (req, res) => {
   res.json("hello there");
@@ -32,7 +39,7 @@ app.get("/sample", (req, res) => {
   res.status(200).json({ data });
 });
 //user management route
-app.use("/api/user", userRoutes);
+app.use("/api/user", cors(), userRoutes);
 //chat api end points
 app.use("/api/chat", chatRoutes);
 //message routes
@@ -50,6 +57,8 @@ const io = new Server(server, {
   cors: {
     origin: "https://chat-front-end-three.vercel.app",
     credentials: true,
+    origin: "https://testcaseonly.onrender.com",
+    // credentials: true,
   },
   pingTimeout: 60000,
 });
