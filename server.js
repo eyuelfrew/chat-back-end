@@ -15,9 +15,9 @@ import { errorHandler } from "./middleware/errorMiddleware.js";
 import cors from "cors";
 dotenv.config();
 const app = express();
-
+//"https://testcaseonly.onrender.com",
 const corsOptions = {
-  origin: ["https://testcaseonly.onrender.com"],
+  origin: ["http://localhost:5173"],
   // methods: ["POST", "PUT", "DELETE", "GET"],
   // credentials: true,
 };
@@ -25,17 +25,10 @@ const corsOptions = {
 app.use(express.json());
 app.use(cors(corsOptions));
 connectDB();
-app.get("/", (req, res) => {
-  res.json("hello there");
-});
-app.get("/sample", (req, res) => {
-  res.status(200).json({ data });
-});
-//user management route
+
+// chat - app routes
 app.use("/api/user", cors(), userRoutes);
-//chat api end points
 app.use("/api/chat", chatRoutes);
-//message routes
 app.use("/api/message", messageRoutes);
 
 app.use(notFound);

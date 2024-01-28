@@ -1,6 +1,7 @@
 import asynchHandler from "express-async-handler";
 import User from "../models/userModle.js";
 import generateToken from "../config/generateToken.js";
+import CryptoJS from "crypto-js";
 // import { v2 as cloudinary } from "cloudinary";
 // cloudinary.config({
 //   cloud_name: "de4f00fc1",
@@ -9,18 +10,15 @@ import generateToken from "../config/generateToken.js";
 // });
 const registerUser = asynchHandler(async (req, res) => {
   const { name, email, password, pic } = req.body;
-  //cjecking required filds
   if (!name || !email || !password) {
     return res.status(400).send({ msg: "Please Fill All Fields!" });
   }
-  //check for duplication conflict
   const userExists = await User.findOne({ email });
   if (userExists) {
     return res
       .status(409)
       .send({ msg: "User Email Already Exists!", status: 409 });
   }
-
   const user = await User.create({
     name,
     email,
@@ -48,7 +46,7 @@ const authUser = asynchHandler(async (req, res) => {
   const { email, password } = req.body;
   const userExist = await User.findOne({ email });
   if (!userExist) {
-    return res.send({ msg: "User not found!", status: 404 });
+    return res.status(404).send({ msg: "User not found!", status: 404 });
   }
   if (userExist && (await userExist.matchPassword(password))) {
     return res.status(200).send({
@@ -68,7 +66,7 @@ const authUser = asynchHandler(async (req, res) => {
     // token: generateToken(userExist._id, userExist.email),
     // });
   }
-  res.json({ msg: "Login Failed!", status: 401 });
+  res.status(401).send({ msg: "Login Failed!", status: 401 });
 });
 
 // get users
@@ -85,7 +83,31 @@ const allUsers = asynchHandler(async (req, res) => {
   res.send(users);
 });
 
-export { registerUser, authUser, allUsers };
+//verfifiy email
+const verifiyEmail = asynchHandler(async (req, res) => {
+  try {
+    const emailToken = req.body.emailToken;
+    if (!emailToken) return res.status(404).json("Email Token Not Found!");
+    const user = await User.findOne({ emailToken });
+    if (user) {
+      user.emailToken = null;
+      user.isVerified = true;
+      await user.save();
+      res.status(200).json({
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        token: generateToken(userExist._id, userExist.email),
+        isVerified: user?.isVerified,
+      });
+    } else res.status(404).json("Email Verification Faild. invalid token!");
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error.message);
+  }
+});
+
+export { registerUser, authUser, allUsers, verifiyEmail };
 
 //  if (req.file) {
 //    try {

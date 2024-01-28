@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 import mongoose from "mongoose";
+
 const connectDB = async () => {
   const ENV = process.env.MONGO_URI;
   try {
