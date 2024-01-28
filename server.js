@@ -40,7 +40,7 @@ const server = app.listen(
 );
 const io = new Server(server, {
   cors: {
-    origin: "https://testcaseonly.onrender.com",
+    origin: "http://localhost:5173",
   },
 });
 
