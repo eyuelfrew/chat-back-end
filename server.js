@@ -17,7 +17,7 @@ dotenv.config();
 const app = express();
 //"https://testcaseonly.onrender.com",
 const corsOptions = {
-  origin: ["http://localhost:5173"],
+  origin: ["https://testcaseonly.onrender.com"],
   // methods: ["POST", "PUT", "DELETE", "GET"],
   // credentials: true,
 };
@@ -27,7 +27,7 @@ app.use(cors(corsOptions));
 connectDB();
 
 // chat - app routes
-app.use("/api/user", cors(), userRoutes);
+app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
 app.use("/api/message", messageRoutes);
 
@@ -40,7 +40,7 @@ const server = app.listen(
 );
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: "https://testcaseonly.onrender.com",
   },
 });
 
