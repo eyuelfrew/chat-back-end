@@ -32,7 +32,8 @@ const registerUser = asynchHandler(async (req, res) => {
       userId: user._id,
       token: crypto.randomBytes(64).toString("hex"),
     });
-    const link = `https://testcaseonly.onrender.com/user/confirm/${eToken.token}`;
+    // const link = `https://testcaseonly.onrender.com/user/confirm/${eToken.token}`;
+    const link = `http://localhost:5000/user/confirm/${eToken.token}`;
     await sendMail(user.email, link);
     res.send({ status: 201, msg: "user registered" });
     // res.status(201).json({
