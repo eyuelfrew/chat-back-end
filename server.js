@@ -17,7 +17,7 @@ dotenv.config();
 const app = express();
 //"https://testcaseonly.onrender.com",
 const corsOptions = {
-  origin: ["https://testcaseonly.onrender.com", "http://localhost:5174"],
+  origin: ["https://testcaseonly.onrender.com", "http://localhost:5173"],
   // methods: ["POST", "PUT", "DELETE", "GET"],
   // credentials: true,
 };
@@ -40,7 +40,7 @@ const server = app.listen(
 );
 const io = new Server(server, {
   cors: {
-    origin: ["https://testcaseonly.onrender.com", "http://localhost:5174"],
+    origin: ["https://testcaseonly.onrender.com", "http://localhost:5173"],
   },
 });
 
