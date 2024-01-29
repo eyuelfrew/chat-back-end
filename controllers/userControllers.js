@@ -93,8 +93,19 @@ const confirmEmail = asynchHandler(async (req, res) => {
     await User.updateOne({ _id: token.userId }, { $set: { isVerified: true } });
     await emailToken.findByIdAndDelete(token._id);
     const user = await User.findOne({ _id: token.userId });
-    user.token = generateToken(user._id, user.email);
-    return res.json({ msg: "Email Verified!", status: 1, user: user });
+    return res.json({
+      msg: "Email Verified!",
+      status: 1,
+      user: {
+        status: 200,
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        password: user.password,
+        pic: user.pic,
+        token: generateToken(user._id, user.email),
+      },
+    });
     // await User.updateOne({ _id: token.userId }, { $set: { isVerified: true } });
     // if (user) {
     //   user.emailToken = null;
