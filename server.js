@@ -41,9 +41,10 @@ const server = app.listen(
 // origin: ["https://testcaseonly.onrender.com", "http://localhost:5173"],
 const io = new Server(server, {
   cors: {
-    origin: "https://testcaseonly.onrender.com",
+    origin: ["https://testcaseonly.onrender.com", "http://localhost:5173"],
   },
 });
+
 
 // io.on("connection", (socket) => {
 //   console.log("Connected to socket.io");
