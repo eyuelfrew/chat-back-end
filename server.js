@@ -38,9 +38,10 @@ const server = app.listen(
   PORT,
   console.log(`Serever Started on PORT ${PORT}`.yellow.bold)
 );
+// origin: ["https://testcaseonly.onrender.com", "http://localhost:5173"],
 const io = new Server(server, {
   cors: {
-    origin: ["https://testcaseonly.onrender.com", "http://localhost:5173"],
+    origin: "https://testcaseonly.onrender.com",
   },
 });
 

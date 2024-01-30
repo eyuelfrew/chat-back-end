@@ -32,3 +32,5 @@ const sendMail = async (email, link) => {
   }
 };
 export default sendMail;
+
+// https://testcaseonly.onrender.com/user/confirm/6311c021dfbc7495ef5acaf0cfed1fd3a07536fb4bd17386a473a04a128cfb2974bd5ccb08d28d0126ae23eb88df55bd95028956edc42e94711e746342aa239f
