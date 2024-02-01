@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-import data from "./data/data.js";
 import express from "express";
 // import { chats } from "./data/data.js";
 import connectDB from "./config/db.js";
@@ -44,7 +43,6 @@ const io = new Server(server, {
     origin: ["https://testcaseonly.onrender.com", "http://localhost:5173"],
   },
 });
-
 
 // io.on("connection", (socket) => {
 //   console.log("Connected to socket.io");
