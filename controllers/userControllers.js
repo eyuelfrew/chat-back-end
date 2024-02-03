@@ -128,8 +128,16 @@ const confirmEmail = asynchHandler(async (req, res) => {
 /**Delete Account  */
 
 const DeleteAccount = asynchHandler(async (req, res) => {
-  // const id = req.params.id;
-  res.json({ msg: "Delete Account Route Works!" });
+  const id = req.params.id;
+  try {
+    const user = await User.findByIdAndDelete(id);
+    if (user) {
+      return res.json({ message: "Account Deleted!", status: 1 });
+    }
+    return res.json({ message: "Account Deletetion Faild!", status: 0 });
+  } catch (error) {
+    return res.json({ error: error.message });
+  }
 });
 
 export { registerUser, authUser, allUsers, confirmEmail, DeleteAccount };
