@@ -125,7 +125,14 @@ const confirmEmail = asynchHandler(async (req, res) => {
   }
 });
 
-export { registerUser, authUser, allUsers, confirmEmail };
+/**Delete Account  */
+
+const DeleteAccount = asynchHandler(async (req, res) => {
+  // const id = req.params.id;
+  res.json({ msg: "Delete Account Route Works!" });
+});
+
+export { registerUser, authUser, allUsers, confirmEmail, DeleteAccount };
 
 //  if (req.file) {
 //    try {
