@@ -9,7 +9,7 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
       default:
-        "https://res.cloudinary.com/de4f00fc1/image/upload/v1705340871/chat_app/cosilv7bhqgodhauoysz.jpg",
+        "https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png",
     },
     isVerified: { type: Boolean, default: false },
     emailToken: { type: String },
