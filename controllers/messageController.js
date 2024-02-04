@@ -41,4 +41,15 @@ const allMessages = asynchHandler(async (req, res) => {
     console.log(error.message);
   }
 });
-export { sendMessage, allMessages };
+const ClearMessages = asynchHandler(async (req, res) => {
+  const chatID = req.params.chatId;
+  try {
+    const messasge = await Message.deleteMany({ chat: chatID });
+    if (messasge) {
+      return res.json({ messasge: messasge });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
+export { sendMessage, allMessages, ClearMessages };
