@@ -133,7 +133,15 @@ const removeFromGroup = asynchHandler(async (req, res) => {
     res.json(removed);
   }
 });
-
+const DeletePersonalChat = asynchHandler(async (req, res) => {
+  const chatID = req.params.chatId;
+  try {
+    const chat = await Chat.findByIdAndDelete(chatID);
+    return res.json({ message: "Chat Deleted!", status: 1 });
+  } catch (error) {
+    return res.json({ error: error.message });
+  }
+});
 export {
   accessChat,
   fetchChats,
@@ -141,4 +149,5 @@ export {
   renameGroup,
   addToGroup,
   removeFromGroup,
+  DeletePersonalChat,
 };
