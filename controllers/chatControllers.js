@@ -1,6 +1,7 @@
 import asynchHandler from "express-async-handler";
 import Chat from "../models/chatModel.js";
 import User from "../models/userModle.js";
+import Message from "../models/messageModel.js";
 const accessChat = asynchHandler(async (req, res) => {
   const { userId } = req.body;
   if (!userId) {
@@ -136,7 +137,8 @@ const removeFromGroup = asynchHandler(async (req, res) => {
 const DeletePersonalChat = asynchHandler(async (req, res) => {
   const chatID = req.params.chatId;
   try {
-    const chat = await Chat.findByIdAndDelete(chatID);
+    await Chat.findByIdAndDelete(chatID);
+    await Message.deleteMany({ chat: chatID });
     return res.json({ message: "Chat Deleted!", status: 1 });
   } catch (error) {
     return res.json({ error: error.message });
